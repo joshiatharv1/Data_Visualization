@@ -1,30 +1,21 @@
-import { Children } from 'react';
 import './App.css';
-import {range} from 'd3'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar';
 import Face from './Components/Face';
-const width = 170;
-const height = 170;
-const centerX = width / 2;
-const centerY = height / 2;
-const strokeWidth = 10;
-const eyeOffsetX = 30;
-const eyeOffsetY = 30;
-const eyeRadius = 10;
-const mouthRadius = 40;
+import Mouse from './pages/Mouse';
+import DataV from './pages/DataV';
 
-const faces=range(5);
-
-const App=() => faces.map(()=>( <Face 
-  width={width}
-  height={height}
-  centerX={centerX}
-  centerY={centerY}
-  strokeWidth={strokeWidth}
-  eyeOffsetX={eyeOffsetX}
-  eyeOffsetY={eyeOffsetY}
-  eyeRadius={eyeRadius}
-  mouthRadius={mouthRadius}
-  />
-));
+const App = () => {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/Faces" element={<Face />} />
+        <Route path="/Mouse" element={<Mouse />} />
+        <Route path="/DataV" element={<DataV />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
